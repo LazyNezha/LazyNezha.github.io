@@ -16,9 +16,9 @@
 <meta property="og:description" content="2021&#x2F;10&#x2F;21 15课">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-25T08:58:44.000Z">
-<meta property="article:modified_time" content="2021-10-26T08:48:08.640Z">
+<meta property="article:modified_time" content="2021-10-28T09:00:44.584Z">
 <meta property="article:author" content="懒哪吒">
-<meta property="article:tag" content="学习进度">
+<meta property="article:tag" content="C语言进度">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="懒得写博客" type="application/atom+xml">
@@ -222,6 +222,16 @@
 <li><p>一个内存单元就是一个字节，然后分配地址的</p>
 </li>
 </ul>
+<h4 id="2021-10-27"><a href="#2021-10-27" class="headerlink" title="2021/10/27"></a>2021/10/27</h4><ul>
+<li>26课</li>
+</ul>
+<h5 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//结构体可以让C语言创建新的类型出来</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">//创建一个学生</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stu</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">20</span>];<span class="comment">//成员变量</span></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">double</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//创建一个书的类型</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Book</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">float</span> price;</span><br><span class="line">    <span class="keyword">char</span> id[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Stu</span> <span class="title">s</span> =</span> &#123;<span class="string">&quot;张三&quot;</span>, <span class="number">20</span>, <span class="number">85.5</span>&#125;;<span class="comment">//结构体的创建和初始化</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;1: %s %d %lf\n&quot;</span>, s.name, s.age, s.score);<span class="comment">//结构体变量.成员变量(.操作符)</span></span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Stu</span> *<span class="title">ps</span> =</span> &amp;s;<span class="comment">//结构体指针</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;2: %s %d %lf\n&quot;</span>, (*ps).name, (*ps).age, (*ps).score);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;3: %s %d %lf\n&quot;</span>, ps-&gt;name, ps-&gt;age, ps-&gt;score);<span class="comment">//结构体指针-&gt;成员名</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2021-10-28"><a href="#2021-10-28" class="headerlink" title="2021/10/28"></a>2021/10/28</h4><ul>
+<li>29课 推荐书籍《高质量C/C++编程》</li>
+</ul>
 
       
 
@@ -235,7 +245,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习进度</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C语言进度</a>
         		</li>
       		
 		</ul>
@@ -283,7 +293,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-21"><span class="toc-number">1.</span> <span class="toc-text">2021&#x2F;10&#x2F;21</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-22"><span class="toc-number">2.</span> <span class="toc-text">2021&#x2F;10&#x2F;22</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-25"><span class="toc-number">3.</span> <span class="toc-text">2021&#x2F;10&#x2F;25</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-26"><span class="toc-number">4.</span> <span class="toc-text">2021&#x2F;10&#x2F;26</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-21"><span class="toc-number">1.</span> <span class="toc-text">2021&#x2F;10&#x2F;21</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-22"><span class="toc-number">2.</span> <span class="toc-text">2021&#x2F;10&#x2F;22</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-25"><span class="toc-number">3.</span> <span class="toc-text">2021&#x2F;10&#x2F;25</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-26"><span class="toc-number">4.</span> <span class="toc-text">2021&#x2F;10&#x2F;26</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-27"><span class="toc-number">5.</span> <span class="toc-text">2021&#x2F;10&#x2F;27</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">5.1.</span> <span class="toc-text">结构体</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2021-10-28"><span class="toc-number">6.</span> <span class="toc-text">2021&#x2F;10&#x2F;28</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -399,7 +409,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习进度</a>
+                <a href="javascript:void(0)" class="js-tag color1">C语言进度</a>
               </li>
              
               <li class="article-tag-list-item">
