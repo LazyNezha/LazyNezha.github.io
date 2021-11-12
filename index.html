@@ -162,6 +162,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Clion使用WSL编写C语言问题汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/12/Clion%E4%BD%BF%E7%94%A8WSL%E7%BC%96%E5%86%99C%E8%AF%AD%E8%A8%80%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">Clion使用WSL编写C语言问题汇总</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/12/Clion%E4%BD%BF%E7%94%A8WSL%E7%BC%96%E5%86%99C%E8%AF%AD%E8%A8%80%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" class="archive-article-date">
+  	<time datetime="2021-11-12T08:34:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2021-11-12"><a href="#2021-11-12" class="headerlink" title="2021/11/12"></a>2021/11/12</h1><h2 id="Clion使用WSL编写C语言链接数学库错误"><a href="#Clion使用WSL编写C语言链接数学库错误" class="headerlink" title="Clion使用WSL编写C语言链接数学库错误"></a>Clion使用WSL编写C语言链接数学库错误</h2><p><strong>问题出现场景：</strong></p>
+<p>在Clion中使用sqrt函数引用&lt;math.h&gt;头文件时，提示<code>undefined reference to &#39;sqrt&#39;</code>, 因为WSL使用gcc编译，Linux下的数学库是不自动链接的,也就是说需要你去链接。不过有些系统还是自动链接的。但是WSL的Ubuntu不行，如果发现你加了某个系统函数的头文件还是出现没定义的错误的话，Linux环境下是可以试着自己在编译时加上链接该库的指令,链接数学库是用的 -lm 也就是 gcc -o example.out example.c -lm，但是在Clion中该如何解决呢？</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">疑难杂症</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Clion</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">WSL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/12/Clion%E4%BD%BF%E7%94%A8WSL%E7%BC%96%E5%86%99C%E8%AF%AD%E8%A8%80%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C语言学习进度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -359,11 +447,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Clion</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">疑难杂症</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">疑难杂症</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Clion</a>
         		</li>
       		
 		</ul>
@@ -647,7 +735,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C语言进度</a>
+                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,7 +743,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
+                <a href="javascript:void(0)" class="js-tag color4">WSL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C语言进度</a>
               </li>
              
               <li class="article-tag-list-item">
