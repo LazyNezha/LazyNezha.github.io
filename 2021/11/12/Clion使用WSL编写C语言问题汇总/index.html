@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Clion使用WSL编写C语言问题汇总 | 懒得写博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2021&#x2F;11&#x2F;12Clion使用WSL编写C语言链接数学库错误问题出现场景： 在Clion中使用sqrt函数引用&lt;math.h&gt;头文件时，提示undefined reference to &#39;sqrt&#39;, 因为WSL使用gcc编译，Linux下的数学库是不自动链接的,也就是说需要你去链接。不过有些系统还是自动链接的。但是WSL的Ubuntu不行，如果发现你加了某个系统函">
+  <meta name="description" content="Clion使用WSL编写C语言链接数学库错误问题出现场景： 在Clion中使用sqrt函数引用&lt;math.h&gt;头文件时，提示undefined reference to &#39;sqrt&#39;, 因为WSL使用gcc编译，Linux下的数学库是不自动链接的,也就是说需要你去链接。不过有些系统还是自动链接的。但是WSL的Ubuntu不行，如果发现你加了某个系统函数的头文件还是出现没">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Clion使用WSL编写C语言问题汇总">
 <meta property="og:url" content="http://example.com/2021/11/12/Clion%E4%BD%BF%E7%94%A8WSL%E7%BC%96%E5%86%99C%E8%AF%AD%E8%A8%80%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="懒得写博客">
-<meta property="og:description" content="2021&#x2F;11&#x2F;12Clion使用WSL编写C语言链接数学库错误问题出现场景： 在Clion中使用sqrt函数引用&lt;math.h&gt;头文件时，提示undefined reference to &#39;sqrt&#39;, 因为WSL使用gcc编译，Linux下的数学库是不自动链接的,也就是说需要你去链接。不过有些系统还是自动链接的。但是WSL的Ubuntu不行，如果发现你加了某个系统函">
+<meta property="og:description" content="Clion使用WSL编写C语言链接数学库错误问题出现场景： 在Clion中使用sqrt函数引用&lt;math.h&gt;头文件时，提示undefined reference to &#39;sqrt&#39;, 因为WSL使用gcc编译，Linux下的数学库是不自动链接的,也就是说需要你去链接。不过有些系统还是自动链接的。但是WSL的Ubuntu不行，如果发现你加了某个系统函数的头文件还是出现没">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2021/11/12/hmuST9WGx2i8Je7.png">
 <meta property="article:published_time" content="2021-11-12T08:34:10.000Z">
-<meta property="article:modified_time" content="2021-11-12T08:58:11.752Z">
+<meta property="article:modified_time" content="2021-11-12T09:02:42.700Z">
 <meta property="article:author" content="懒哪吒">
 <meta property="article:tag" content="疑难杂症">
 <meta property="article:tag" content="Clion">
@@ -194,7 +194,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="2021-11-12"><a href="#2021-11-12" class="headerlink" title="2021/11/12"></a>2021/11/12</h1><h2 id="Clion使用WSL编写C语言链接数学库错误"><a href="#Clion使用WSL编写C语言链接数学库错误" class="headerlink" title="Clion使用WSL编写C语言链接数学库错误"></a>Clion使用WSL编写C语言链接数学库错误</h2><p><strong>问题出现场景：</strong></p>
+        <h2 id="Clion使用WSL编写C语言链接数学库错误"><a href="#Clion使用WSL编写C语言链接数学库错误" class="headerlink" title="Clion使用WSL编写C语言链接数学库错误"></a>Clion使用WSL编写C语言链接数学库错误</h2><p><strong>问题出现场景：</strong></p>
 <p>在Clion中使用sqrt函数引用&lt;math.h&gt;头文件时，提示<code>undefined reference to &#39;sqrt&#39;</code>, 因为WSL使用gcc编译，Linux下的数学库是不自动链接的,也就是说需要你去链接。不过有些系统还是自动链接的。但是WSL的Ubuntu不行，如果发现你加了某个系统函数的头文件还是出现没定义的错误的话，Linux环境下是可以试着自己在编译时加上链接该库的指令,链接数学库是用的 -lm 也就是 gcc -o example.out example.c -lm，但是在Clion中该如何解决呢？</p>
 <span id="more"></span>
 
@@ -281,7 +281,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-11-12"><span class="toc-number">1.</span> <span class="toc-text">2021&#x2F;11&#x2F;12</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Clion%E4%BD%BF%E7%94%A8WSL%E7%BC%96%E5%86%99C%E8%AF%AD%E8%A8%80%E9%93%BE%E6%8E%A5%E6%95%B0%E5%AD%A6%E5%BA%93%E9%94%99%E8%AF%AF"><span class="toc-number">1.1.</span> <span class="toc-text">Clion使用WSL编写C语言链接数学库错误</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Clion%E4%BD%BF%E7%94%A8WSL%E7%BC%96%E5%86%99C%E8%AF%AD%E8%A8%80%E9%93%BE%E6%8E%A5%E6%95%B0%E5%AD%A6%E5%BA%93%E9%94%99%E8%AF%AF"><span class="toc-number">1.</span> <span class="toc-text">Clion使用WSL编写C语言链接数学库错误</span></a></li></ol>
                     </div>
                 </span>
             </div>
