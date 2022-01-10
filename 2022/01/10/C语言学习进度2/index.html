@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: C语言进度 | 懒得写博客</title>
+  <title>C语言学习进度2 | 懒得写博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="懒得写博客">
-<meta property="og:url" content="http://example.com/tags/C%E8%AF%AD%E8%A8%80%E8%BF%9B%E5%BA%A6/index.html">
+  <meta name="description" content="磕磕绊绊一半结束了，为了复习方便，分2段记录，希望2个月内可以结束课程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言学习进度2">
+<meta property="og:url" content="http://example.com/2022/01/10/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A62/index.html">
 <meta property="og:site_name" content="懒得写博客">
+<meta property="og:description" content="磕磕绊绊一半结束了，为了复习方便，分2段记录，希望2个月内可以结束课程。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-10T06:15:36.000Z">
+<meta property="article:modified_time" content="2022-01-10T09:00:56.143Z">
 <meta property="article:author" content="懒哪吒">
+<meta property="article:tag" content="C语言进度">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="懒得写博客" type="application/atom+xml">
@@ -161,35 +166,58 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  <i class="fa fa-thumb-tack"></i>
+  <font color=7D26CD>置顶</font>
+  <span class="post-meta-divider">|</span>
+
+<article id="post-C语言学习进度2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      C语言学习进度2
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/01/10/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A62/" class="archive-article-date">
+
+        
+        <a href="/2022/01/10/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A62/" class="archive-article-date">
   	<time datetime="2022-01-10T06:15:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/10/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A62/">C语言学习进度2</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>磕磕绊绊一半结束了，为了复习方便，分2段记录，希望2个月内可以结束课程。</p>
+<span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
+<h4 id="2022-1-10"><a href="#2022-1-10" class="headerlink" title="2022/1/10"></a>2022/1/10</h4><ul>
+<li><p>91课</p>
+</li>
+<li><p>92课 25:33</p>
+</li>
+</ul>
+<blockquote>
+<p>指针常量 const int * p = &amp;m</p>
+<p>常量指针 int * const p = &amp;m</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//把src指向的内容拷贝放进dest指向的空间中</span></span><br><span class="line"><span class="comment">//从本质上讲，希望dest指向的内容被修改，src指向的内容不应该被修改</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//strcpy这个库函数，其实返回的是目标空间的其实地址</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">my_strcpy</span><span class="params">(<span class="keyword">char</span>* dest, <span class="keyword">const</span> <span class="keyword">char</span>* src)</span> </span>&#123;<span class="comment">//加入const下面*dest++ = *src如果写反了就会报错</span></span><br><span class="line">    assert(src != <span class="literal">NULL</span>);<span class="comment">//断言</span></span><br><span class="line">    assert(dest != <span class="literal">NULL</span>);<span class="comment">//断言</span></span><br><span class="line">    <span class="keyword">char</span>* ret = dest;</span><br><span class="line">    <span class="keyword">while</span> (*dest++ = *src++) &#123;</span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;<span class="comment">//返回目标空间的起始地址</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> arr1[<span class="number">20</span>] = <span class="string">&quot;xxxxxxxxx&quot;</span>;</span><br><span class="line">    <span class="keyword">char</span> arr2[] = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, my_strcpy(arr1, arr2));<span class="comment">//链式访问 my_strcpy的返回值作为printf的参数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -201,67 +229,69 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/11/18/%E6%88%91%E4%B8%8D%E6%83%B3%E5%8F%98%E6%88%90%E4%B8%80%E4%B8%AA%E5%BA%9F%E7%89%A9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我不想变成一个废物</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/10/25/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2021-10-25T08:58:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-25</time>
-</a>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-1-10"><span class="toc-number">1.</span> <span class="toc-text">2022&#x2F;1&#x2F;10</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-    	 
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/10/25/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6/">C语言学习进度</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C语言进度</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+
 
 
           </div>
@@ -287,9 +317,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
