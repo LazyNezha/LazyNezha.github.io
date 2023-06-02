@@ -6,25 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://temino.xyz">
-  <title>Clion使用WSL编写C语言问题汇总 | 懒得写博客</title>
+  <title>Archives: 2023 | 懒得写博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Clion使用WSL编写C语言链接数学库错误问题出现场景： 在Clion中使用sqrt函数引用&lt;math.h&gt;头文件时，提示undefined reference to &#39;sqrt&#39;, 因为WSL使用gcc编译，Linux下的数学库是不自动链接的,也就是说需要你去链接。不过有些系统还是自动链接的。但是WSL的Ubuntu不行，如果发现你加了某个系统函数的头文件还是出现没">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Clion使用WSL编写C语言问题汇总">
-<meta property="og:url" content="https://temino.xyz/2021/11/12/Clion%E4%BD%BF%E7%94%A8WSL%E7%BC%96%E5%86%99C%E8%AF%AD%E8%A8%80%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="懒得写博客">
+<meta property="og:url" content="https://temino.xyz/archives/2023/index.html">
 <meta property="og:site_name" content="懒得写博客">
-<meta property="og:description" content="Clion使用WSL编写C语言链接数学库错误问题出现场景： 在Clion中使用sqrt函数引用&lt;math.h&gt;头文件时，提示undefined reference to &#39;sqrt&#39;, 因为WSL使用gcc编译，Linux下的数学库是不自动链接的,也就是说需要你去链接。不过有些系统还是自动链接的。但是WSL的Ubuntu不行，如果发现你加了某个系统函数的头文件还是出现没">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2021/11/12/hmuST9WGx2i8Je7.png">
-<meta property="og:image" content="https://i.loli.net/2021/11/23/5At1suSfkQOxCeZ.png">
-<meta property="article:published_time" content="2021-11-12T08:34:10.000Z">
-<meta property="article:modified_time" content="2021-11-23T04:26:06.032Z">
 <meta property="article:author" content="TEMINO">
-<meta property="article:tag" content="疑难杂症">
-<meta property="article:tag" content="Clion">
-<meta property="article:tag" content="WSL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/11/12/hmuST9WGx2i8Je7.png">
   
     <link rel="alternative" href="/atom.xml" title="懒得写博客" type="application/atom+xml">
   
@@ -176,55 +166,35 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-Clion使用WSL编写C语言问题汇总" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 class="article-title" itemprop="name">
-      Clion使用WSL编写C语言问题汇总
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2023/06/02/Windows%E7%8E%AF%E5%A2%83%E4%B8%8BCygwin%E7%9A%84%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2023-06-02T02:44:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-02</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2023/06/02/Windows%E7%8E%AF%E5%A2%83%E4%B8%8BCygwin%E7%9A%84%E9%85%8D%E7%BD%AE/">Windows环境下Cygwin的配置</a>
     </h1>
   
 
-        
-        <a href="/2021/11/12/Clion%E4%BD%BF%E7%94%A8WSL%E7%BC%96%E5%86%99C%E8%AF%AD%E8%A8%80%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" class="archive-article-date">
-  	<time datetime="2021-11-12T08:34:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Clion使用WSL编写C语言链接数学库错误"><a href="#Clion使用WSL编写C语言链接数学库错误" class="headerlink" title="Clion使用WSL编写C语言链接数学库错误"></a>Clion使用WSL编写C语言链接数学库错误</h2><p><strong>问题出现场景：</strong></p>
-<p>在Clion中使用sqrt函数引用&lt;math.h&gt;头文件时，提示<code>undefined reference to &#39;sqrt&#39;</code>, 因为WSL使用gcc编译，Linux下的数学库是不自动链接的,也就是说需要你去链接。不过有些系统还是自动链接的。但是WSL的Ubuntu不行，如果发现你加了某个系统函数的头文件还是出现没定义的错误的话，Linux环境下是可以试着自己在编译时加上链接该库的指令,链接数学库是用的 -lm 也就是 gcc -o example.out example.c -lm，但是在Clion中该如何解决呢？</p>
-<span id="more"></span>
-
-<p><strong>解决办法：</strong></p>
-<blockquote>
-<p>使用CMake链接到C数学库</p>
-</blockquote>
-<p>数学库通常作为一个单独的库（方便地命名为<code>m</code> ）链接，您明确需要与之链接。</p>
-<p>您告诉 CLion（通过其<code>CMakeLists.txt</code>文件）使用<a target="_blank" rel="noopener" href="https://stackoom.com/link/aHR0cHM6Ly9jbWFrZS5vcmcvY21ha2UvaGVscC9sYXRlc3QvY29tbWFuZC90YXJnZXRfbGlua19saWJyYXJpZXMuaHRtbA=="><code>target_link_libraries</code></a>命令链接库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target_link_libraries(PROJECTNAME m)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/11/12/hmuST9WGx2i8Je7.png" alt="CMale.png"></p>
-<h2 id="Clion调用C静态库"><a href="#Clion调用C静态库" class="headerlink" title="Clion调用C静态库"></a>Clion调用C静态库</h2><blockquote>
-<p>例子中创建了lib文件夹存放静态库文件，header文件夹存放头文件</p>
-</blockquote>
-<p>进入到CMakeList.txt文件进行修改，例子如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.15)</span><br><span class="line">project(call_static_test C)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(CMAKE_C_STANDARD 11)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定lib目录</span></span><br><span class="line">link_directories(<span class="variable">$&#123;PROJECT_SOURCE_DIR&#125;</span>/lib)</span><br><span class="line"><span class="comment"># 指定头文件搜索路径</span></span><br><span class="line">include_directories(<span class="variable">$&#123;PROJECT_SOURCE_DIR&#125;</span>/include)</span><br><span class="line"></span><br><span class="line">add_executable(<span class="variable">$&#123;PROJECT_NAME&#125;</span>  main.c)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将库链接到项目中</span></span><br><span class="line">target_link_libraries(<span class="variable">$&#123;PROJECT_NAME&#125;</span> libstatic_generate.a)</span><br></pre></td></tr></table></figure>
-
-<p>图例如下</p>
-<p><img src="https://i.loli.net/2021/11/23/5At1suSfkQOxCeZ.png" alt="静态库.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -236,86 +206,23 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Clion</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">WSL</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2023/06/02/Windows%E7%8E%AF%E5%A2%83%E4%B8%8BCygwin%E7%9A%84%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Windows环境下Cygwin的配置
-        
-      </div>
-    </a>
   
   
-    <a href="/2021/11/12/Windows%E7%8E%AF%E5%A2%83Clion%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E6%9C%80%E5%AE%8C%E7%BE%8E%E6%96%B9%E6%A1%88/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Windows环境Clion中文乱码最完美方案</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Clion%E4%BD%BF%E7%94%A8WSL%E7%BC%96%E5%86%99C%E8%AF%AD%E8%A8%80%E9%93%BE%E6%8E%A5%E6%95%B0%E5%AD%A6%E5%BA%93%E9%94%99%E8%AF%AF"><span class="toc-number">1.</span> <span class="toc-text">Clion使用WSL编写C语言链接数学库错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Clion%E8%B0%83%E7%94%A8C%E9%9D%99%E6%80%81%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">Clion调用C静态库</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-
+    
 
 
           </div>
@@ -341,8 +248,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
