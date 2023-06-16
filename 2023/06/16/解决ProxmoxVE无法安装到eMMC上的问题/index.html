@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://temino.xyz">
-  <title>Archives: 2023/6 | 懒得写博客</title>
+  <title>解决proxmoxVE无法安装到eMMC上的问题 | 懒得写博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="懒得写博客">
-<meta property="og:url" content="https://temino.xyz/archives/2023/06/index.html">
+  <meta name="description" content="9块9的快乐没了玩客云坏了，之前刷了OpenWRT做旁路由，虽然带宽最高只能跑到300M，但勉强也让女儿实现了迪士尼自由，但是最近突然开始莫名的重启，不定时的，几分钟一次。其实之前就有征兆了，ssh的连接很慢，网页访问速度奇慢，一开始以为是固件问题，刷了几次，但这次是彻底没救了，所以转向了x86架构。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决proxmoxVE无法安装到eMMC上的问题">
+<meta property="og:url" content="https://temino.xyz/2023/06/16/%E8%A7%A3%E5%86%B3ProxmoxVE%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E5%88%B0eMMC%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="懒得写博客">
+<meta property="og:description" content="9块9的快乐没了玩客云坏了，之前刷了OpenWRT做旁路由，虽然带宽最高只能跑到300M，但勉强也让女儿实现了迪士尼自由，但是最近突然开始莫名的重启，不定时的，几分钟一次。其实之前就有征兆了，ssh的连接很慢，网页访问速度奇慢，一开始以为是固件问题，刷了几次，但这次是彻底没救了，所以转向了x86架构。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-16T02:29:52.000Z">
+<meta property="article:modified_time" content="2023-06-16T05:53:47.033Z">
 <meta property="article:author" content="TEMINO">
+<meta property="article:tag" content="软路由">
+<meta property="article:tag" content="PVE">
+<meta property="article:tag" content="虚拟机">
+<meta property="article:tag" content="折腾">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="懒得写博客" type="application/atom+xml">
@@ -166,35 +174,74 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-解决ProxmoxVE无法安装到eMMC上的问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/06/16/%E8%A7%A3%E5%86%B3ProxmoxVE%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E5%88%B0eMMC%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-06-16T02:29:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/06/16/%E8%A7%A3%E5%86%B3ProxmoxVE%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E5%88%B0eMMC%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98/">解决proxmoxVE无法安装到eMMC上的问题</a>
+    <h1 class="article-title" itemprop="name">
+      解决proxmoxVE无法安装到eMMC上的问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2023/06/16/%E8%A7%A3%E5%86%B3ProxmoxVE%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E5%88%B0eMMC%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2023-06-16T02:29:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="9块9的快乐没了"><a href="#9块9的快乐没了" class="headerlink" title="9块9的快乐没了"></a>9块9的快乐没了</h1><p>玩客云坏了，之前刷了OpenWRT做旁路由，虽然带宽最高只能跑到300M，但勉强也让女儿实现了迪士尼自由，但是最近突然开始莫名的重启，不定时的，几分钟一次。其实之前就有征兆了，ssh的连接很慢，网页访问速度奇慢，一开始以为是固件问题，刷了几次，但这次是彻底没救了，所以转向了x86架构。</p>
+<span id="more"></span>
+
+<h1 id="硬盘哪去了？"><a href="#硬盘哪去了？" class="headerlink" title="硬盘哪去了？"></a>硬盘哪去了？</h1><p>4G内存16G存储，J4105的CPU，准备装PVE，报错，提示<code>unable to get dvice for partition 1 on device /dev/mmcblk0</code>，开始认为是硬盘的问题，遂想格式化一下硬盘再装，PE进入发现找不到硬盘，bing一下，说要进bios把ACHI格式改成IDE模式才行，但是没得改，换了PE也不行，最后用cmd命令，格式化了硬盘</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">diskpart</span><br><span class="line">list disk</span><br><span class="line">select disk 1</span><br><span class="line">clean</span><br></pre></td></tr></table></figure>
+
+<p>但是安装PVE时仍然报一样的错误，最后想到这台瘦客户机的存储，是否和玩客云一样，是板载的eMMC，最后还真让我找到了类似的文章，并按照文章内容，成功写入PVE，记录如下：</p>
+<p>⚠️<strong>警告：PVE 并未针对这种设备优化，eMMC 也并非针对这种使用设计。PVE 每天要往存储设备中写入一定量的日志信息，USE AT YOUR OWN RISK！</strong></p>
+<ol>
+<li><p>启动 PVE 安装程序，进入安装初始界面</p>
+</li>
+<li><p>启动后点击 <code>Install Proxmox VE (Debug mode)</code></p>
+</li>
+<li><p>在第一次提示你可以输入命令的时候输入 <code>Ctrl-D</code> ，继续安装过程</p>
+</li>
+<li><p>在第二次提示你可以输入命令的时候输入 <code>vi /usr/bin/proxinstall</code> 编辑文件（或者使用其他文字编辑器如 nano）</p>
+</li>
+<li><p>输入 <code>/unable to get device</code> 定位到对应位置</p>
+</li>
+<li><p>你可以看到类似下方的内容：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/</span>[^<span class="regexp">/]+/</span>hd[a-z]$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/n</span>vme\\d+n\\d+$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>p$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span> <span class="string">&quot;unable to get device for partitionpartnum on devicedev\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>将其修改（添加）为：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/</span>[^<span class="regexp">/]+/</span>hd[a-z]$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/n</span>vme\\d+n\\d+$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>p$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/mm</span>cblk\\d+$|) &#123;<span class="regexp">//</span>这里不一样</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>p$partnum&quot;</span>;<span class="regexp">//</span>这里不一样</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span> <span class="string">&quot;unable to get device for partitionpartnum on devicedev\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+<li><p>然后输入 <code>Ctrl-D</code> ，继续安装过程</p>
+</li>
+<li><p>此时应该进入了正常的安装程序，硬盘选择的时候选择 <code>/dev/mmcblk0</code> （没有 <code>bootX</code> 后缀）（建议关闭 swap）</p>
+</li>
+<li><p>最后安装完成后输入 <code>Ctrl-D</code> ，重启系统</p>
+</li>
+</ol>
+<p>另外，也可以使用官方提供的方式，先安装 Debian 再安装 PVE，只不过那样安装很慢，而且网卡和分区并没有提前配置好，需要自己手动配置。具体参见：<a target="_blank" rel="noopener" href="https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_Buster">Install Proxmox VE on Debian Buster - Proxmox VE </a></p>
+<p>网上还有使用 bin 等类似 ghost 的方法直接 dd 进 eMMC，或者先安装到另外一个硬盘上再使用 DiskGenius 乾坤大挪移到 eMMC 等方法在此不再做过多叙述，可以参见下方文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.wnark.com/archives/116.html">N3450（锐角云）安装Proxmox VE（PVE）教程 - 方舟基地 </a></li>
+</ul>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><code>Install Proxmox VE (Debug mode)</code> 提供了在安装过程中各个阶段执行脚本的能力。</p>
+<p>修改的文件是为安装程序提供 MMC 设备检测支持。</p>
+<p>没有直接修改 ISO 主要是由于，一是该文件在 pve-installer.squashfs 中，由安装程序在运行的时候加载，修改需要解包后重新打包，二是这样更透明，避免使用一个来源不是很明确的二进制文件。</p>
+<p>安装过程中，配置信息那里使用了 Linux 的图形界面，类似于 Ubuntu 的使用，按下 <code>Ctrl+Alt+F1/F2</code> 为相应的日志信息，按下 <code>Ctrl+Alt+F3</code> 可以切换出命令行，按下 <code>Ctrl+Alt+F4</code> 可以切换回图形界面。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -218,61 +265,69 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/06/02/Windows%E7%8E%AF%E5%A2%83%E4%B8%8BCygwin%E7%9A%84%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2023-06-02T09:44:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/06/02/Windows%E7%8E%AF%E5%A2%83%E4%B8%8BCygwin%E7%9A%84%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Windows环境下Cygwin的配置</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/06/02/Windows%E7%8E%AF%E5%A2%83%E4%B8%8BCygwin%E7%9A%84%E9%85%8D%E7%BD%AE/">Windows环境下Cygwin的配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">疑难杂症</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Clion</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#9%E5%9D%979%E7%9A%84%E5%BF%AB%E4%B9%90%E6%B2%A1%E4%BA%86"><span class="toc-number">1.</span> <span class="toc-text">9块9的快乐没了</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E5%93%AA%E5%8E%BB%E4%BA%86%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">硬盘哪去了？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">原理</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+
 
 
           </div>
@@ -298,8 +353,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
