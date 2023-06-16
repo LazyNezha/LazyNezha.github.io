@@ -16,7 +16,7 @@
 <meta property="og:description" content="9块9的快乐没了玩客云坏了，之前刷了OpenWRT做旁路由，虽然带宽最高只能跑到300M，但勉强也让女儿实现了迪士尼自由，但是最近突然开始莫名的重启，不定时的，几分钟一次。其实之前就有征兆了，ssh的连接很慢，网页访问速度奇慢，一开始以为是固件问题，刷了几次，但这次是彻底没救了，所以转向了x86架构。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-06-16T02:29:52.000Z">
-<meta property="article:modified_time" content="2023-06-16T05:53:47.033Z">
+<meta property="article:modified_time" content="2023-06-16T06:37:18.793Z">
 <meta property="article:author" content="TEMINO">
 <meta property="article:tag" content="软路由">
 <meta property="article:tag" content="PVE">
@@ -202,29 +202,20 @@
 
 <p>但是安装PVE时仍然报一样的错误，最后想到这台瘦客户机的存储，是否和玩客云一样，是板载的eMMC，最后还真让我找到了类似的文章，并按照文章内容，成功写入PVE，记录如下：</p>
 <p>⚠️<strong>警告：PVE 并未针对这种设备优化，eMMC 也并非针对这种使用设计。PVE 每天要往存储设备中写入一定量的日志信息，USE AT YOUR OWN RISK！</strong></p>
-<ol>
-<li><p>启动 PVE 安装程序，进入安装初始界面</p>
-</li>
-<li><p>启动后点击 <code>Install Proxmox VE (Debug mode)</code></p>
-</li>
-<li><p>在第一次提示你可以输入命令的时候输入 <code>Ctrl-D</code> ，继续安装过程</p>
-</li>
-<li><p>在第二次提示你可以输入命令的时候输入 <code>vi /usr/bin/proxinstall</code> 编辑文件（或者使用其他文字编辑器如 nano）</p>
-</li>
-<li><p>输入 <code>/unable to get device</code> 定位到对应位置</p>
-</li>
-<li><p>你可以看到类似下方的内容：</p>
+<p>1.启动 PVE 安装程序，进入安装初始界面</p>
+<p>2.启动后点击 <code>Install Proxmox VE (Debug mode)</code></p>
+<p>3.在第一次提示你可以输入命令的时候输入 <code>Ctrl-D</code> ，继续安装过程</p>
+<p>4.在第二次提示你可以输入命令的时候输入 <code>vi /usr/bin/proxinstall</code> 编辑文件（或者使用其他文字编辑器如 nano）</p>
+<p>5.输入 <code>/unable to get device</code> 定位到对应位置</p>
+<p>6.你可以看到类似下方的内容：</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/</span>[^<span class="regexp">/]+/</span>hd[a-z]$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/n</span>vme\\d+n\\d+$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>p$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span> <span class="string">&quot;unable to get device for partitionpartnum on devicedev\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>将其修改（添加）为：</p>
-<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/</span>[^<span class="regexp">/]+/</span>hd[a-z]$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/n</span>vme\\d+n\\d+$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>p$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/mm</span>cblk\\d+$|) &#123;<span class="regexp">//</span>这里不一样</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>p$partnum&quot;</span>;<span class="regexp">//</span>这里不一样</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span> <span class="string">&quot;unable to get device for partitionpartnum on devicedev\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
-<li><p>然后输入 <code>Ctrl-D</code> ，继续安装过程</p>
-</li>
-<li><p>此时应该进入了正常的安装程序，硬盘选择的时候选择 <code>/dev/mmcblk0</code> （没有 <code>bootX</code> 后缀）（建议关闭 swap）</p>
-</li>
-<li><p>最后安装完成后输入 <code>Ctrl-D</code> ，重启系统</p>
-</li>
-</ol>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/</span>[^<span class="regexp">/]+/</span>hd[a-z]$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/n</span>vme\\d+n\\d+$|) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>p$partnum&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">elsif</span> ($dev =~ m|^<span class="regexp">/dev/mm</span>cblk\\d+$|) &#123;<span class="regexp">//</span>这里不一样</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;dev&#125;</span>p$partnum&quot;</span>;<span class="regexp">//</span>这里不一样</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span> <span class="string">&quot;unable to get device for partitionpartnum on devicedev\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>7.然后输入 <code>Ctrl-D</code> ，继续安装过程</p>
+<p>8.此时应该进入了正常的安装程序，硬盘选择的时候选择 <code>/dev/mmcblk0</code> （没有 <code>bootX</code> 后缀）（建议关闭 swap）</p>
+<p>9.最后安装完成后输入 <code>Ctrl-D</code> ，重启系统</p>
 <p>另外，也可以使用官方提供的方式，先安装 Debian 再安装 PVE，只不过那样安装很慢，而且网卡和分区并没有提前配置好，需要自己手动配置。具体参见：<a target="_blank" rel="noopener" href="https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_Buster">Install Proxmox VE on Debian Buster - Proxmox VE </a></p>
 <p>网上还有使用 bin 等类似 ghost 的方法直接 dd 进 eMMC，或者先安装到另外一个硬盘上再使用 DiskGenius 乾坤大挪移到 eMMC 等方法在此不再做过多叙述，可以参见下方文章：</p>
 <ul>
